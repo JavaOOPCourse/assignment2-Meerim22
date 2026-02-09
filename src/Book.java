@@ -1,57 +1,81 @@
 public class Book {
-
-    // TODO: make fields private
+    // Private fields (Encapsulation)
     private String title;
     private String author;
     private int year;
     private boolean isAvailable;
 
-    // TODO: Implement parameterized constructor
+    // Parameterized constructor
     public Book(String title, String author, int year) {
-        // implement
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.isAvailable = true; // Books are available by default
     }
 
-    // TODO: Implement copy constructor
+    // Copy constructor
     public Book(Book other) {
-        // implement
+        this.title = other.title;
+        this.author = other.author;
+        this.year = other.year;
+        this.isAvailable = other.isAvailable;
     }
 
-    // TODO: Implement getters
+    // Getters
     public String getTitle() {
-        return null;
+        return title;
     }
 
     public String getAuthor() {
-        return null;
+        return author;
     }
 
     public int getYear() {
-        return 0;
+        return year;
     }
 
     public boolean isAvailable() {
-        return false;
+        return isAvailable;
     }
 
-    // TODO: Implement borrow logic
+    // Borrow book method
     public void borrowBook() {
-        // implement
+        if (isAvailable) {
+            isAvailable = false;
+            System.out.println("Book borrowed successfully.");
+        } else {
+            System.out.println("Book is already borrowed.");
+        }
     }
 
-    // TODO: Implement return logic
+    // Return book method
     public void returnBook() {
-        // implement
+        if (!isAvailable) {
+            isAvailable = true;
+            System.out.println("Book returned successfully.");
+        } else {
+            System.out.println("Book was not borrowed.");
+        }
     }
 
-    // TODO: Override toString()
+    // Override toString()
     @Override
     public String toString() {
-        return "";
+        return "[Book] Title: " + title + ", Author: " + author + ", Year: " + year + ", Available: " + isAvailable;
     }
 
-    // TODO: Override equals()
+    // Override equals()
     @Override
     public boolean equals(Object obj) {
-        return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Book other = (Book) obj;
+        return this.title.equals(other.title) && 
+               this.author.equals(other.author) && 
+               this.year == other.year;
     }
 }
